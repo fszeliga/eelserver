@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Energy Lab</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+         <link rel="stylesheet" type="text/css" href="checkbox.css">
+    </head>
+    <body>
+       <h1>Energy Lab Control</h1>
+                    <form name="inputForm">
+                     <canvas id="myCanvas" width="150" height="150" style="border:1px solid #000000;"></canvas>
+                        <table>
+<!--
+                            <tr>
+                                <th>Light</th>
+                                <td><input id="11on" type="radio" name="light" onclick="sendEvent(0x0b,'on')" checked="true">On</td>
+                                <td><input id="11off" type="radio" onclick="sendEvent(0x0b,'off')" name="light">Off</td>
+                            </tr>
+
+                            <tr>
+                                <th>Desklamp</th>
+                                <td><input id="13on" type="radio" name="desklamp" onclick="sendEvent(0x0d,'on')" checked="true">On</td>
+                                <td><input id="13off" type="radio" name="desklamp" onclick="sendEvent(0x0d,'off')">Off</td>
+                            </tr>
+-->                            
+                            <tr>
+                                <th>Light</th>
+                                <th>                               
+                                    <section>  
+                                        <div class="sliderButton">
+                                            <input type="checkbox" value="None" id="11" name="check" checked />
+                                            <label for="11" onclick="toggleCheckbox('11')"></label>
+                                        </div>
+                                    </section>
+                                </th>
+                                <th></th>
+                            </tr>          
+                            
+                            <tr>
+                                <th>Desklight</th>
+                                <th>                               
+                                    <section>  
+                                        <div class="sliderButton">
+                                            <input type="checkbox" value="None" id="13" name="check" checked />
+                                            <label for="13" onclick="toggleCheckbox('13')"></label>
+                                        </div>
+                                    </section>
+                                </th>
+                                <th></th>
+                            </tr>
+                            
+                            <tr>
+                                <th>Door</th>
+                                <th>                               
+                                    <section>  
+                                        <div class="sliderButton">
+                                            <input type="checkbox" value="None" id="10" name="check" checked />
+                                            <label for="10" onclick="toggleCheckbox('10')"></label>
+                                        </div>
+                                    </section>
+                                </th>
+                                <th></th>
+                            </tr>                        
+                            
+                            <tr>
+                                <th> </th>
+                                <td></td>
+                                <td><div id="output"></div> </td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </form>                    
+    <script type="text/javascript" src="websocket.js"></script>
+    </body>
+</html>

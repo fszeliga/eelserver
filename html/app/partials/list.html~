@@ -1,0 +1,29 @@
+<div id="list" class="list view">
+    <div class="container">
+
+
+
+
+        <div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-list">
+            <div class="cbp-vm-options">
+                <h3 style="display: inline-block">{{ room.name }}
+			
+		</h3>
+<i id="contents-iframe" class="fa fa-camera-retro"></i>
+                <span style="float: right"> Search: <input ng-model="searchText">
+                <select ng-model="item.status">
+                    <option value="">Both</option>
+                    <option value="passive">Passiv</option>
+                    <option value="!passive">Aktiv</option>
+                </select>
+                </span>
+                <br>
+            </div>
+		<!--div class="item"><iframe id="webcamiframe" src="http://energylab.imi.kit.edu:8081" width="340" height="260" scrolling="auto"></iframe></div-->
+		<div class="item" data-ng-repeat="item in room.items | orderBy:'type' | filter:item.status | filter:searchText">
+			<div data-ng-include="'/app/partials/itemDetails.html'" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

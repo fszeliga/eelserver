@@ -1,0 +1,79 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: "vrp-font";
+  src:url("fonts/vrp-font.eot");
+  src:url("fonts/vrp-font.eot?#iefix") format("embedded-opentype"),
+    url("fonts/vrp-font.woff") format("woff"),
+    url("fonts/vrp-font.ttf") format("truetype"),
+    url("fonts/vrp-font.svg#vrp-font") format("svg");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+[data-icon]:before {
+  font-family: "vrp-font" !important;
+  content: attr(data-icon);
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+[class^="icon-"]:before,
+[class*=" icon-"]:before {
+  font-family: "vrp-font" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  speak: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+.icon-chair:before {
+  content: "a";
+}
+.icon-door:before {
+  content: "b";
+}
+.icon-fan:before {
+  content: "c";
+}
+.icon-hum:before {
+  content: "d";
+}
+.icon-temp:before {
+  content: "e";
+}
+
+#webcam_view{
+	margin: 0;
+	padding: 0;
+}
+
+#webcam_view{
+	position: relative;
+	display: inline-block;
+
+	overflow: hidden;
+
+	vertical-align: middle;
+}
+
+#webcam_view hover{
+	color: #265F01;
+}
+
+
+
+
+

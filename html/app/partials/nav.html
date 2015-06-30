@@ -1,0 +1,9 @@
+ <!-- <ul class="nav nav-pills">
+<select name="top5" data-ng-controller="NavbarController"  data-ng-model="roomID" >
+      <option data-ng-repeat="room in rooms | orderBy:'id'" value="{{room.id}}">{{room.name}}</option> 
+    </select>
+        <li data-ng-class="{'active':getClass('/list')}"><a href="#/rooms">Overview</a></li>
+
+    -->
+        <li data-ng-class="{'active':getClass('/room')}"><a data-ng-click="saveRoom({{roomID}})">Room</a></li>
+        <li data-ng-class="{'active':getClass('/list')}"><a href="#/list/{{roomID}}">Items</a></li>

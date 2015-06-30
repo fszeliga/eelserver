@@ -1,0 +1,42 @@
+
+<nav class="st-menu st-effect-9" id="menu-9">
+	<h2>Sidebar</h2>
+	<div>
+		  
+	    <ul  ui-selectable id="defaults">
+    		<li data-ng-repeat="item in defaults | orderBy:'type'" class="defaultItem"><a class="{{item.icon}} icon icon-study" href="#">{{item.name}}</a></li>
+	    </ul>
+	    <ul>
+	    	<li class="defaultItem" data-ng-repeat="item in defaults | orderBy:'type'" ><a class="defaultItem icon" href="#">{{item.name}}</a></li>
+	    	<li><a class="icon icon-study" href="#">Door</a></li>
+		</ul>
+	</div>
+</nav>
+
+<!--<div id="menu" class="column">
+	<button data-effect="st-effect-9" id="add">+</button>
+	<button data-effect="st-effect-9" class="edit-item">Edit</button> 
+</div>-->	
+
+<!-- content push wrapper -->
+<div ng-app="soil" class="st-pusher" id="room">
+	<div>
+		<ol ui-selectable id="items" >
+    		<li data-ng-repeat="item in room.items | orderBy:'type'" class="ui-drraggable ui-draggable-dragging" style="background: black; position: absolute; left: {{item.posx}}px; top: {{item.posy}}px; width: {{item.width}}px; height: {{item.height}}px;">
+    			<a class="icon icon-study" href="#">
+    				<a class="cbp-vm-image {{item.status}}" data-ng-click="changeStatus({{item}})">
+					    <i class="fa {{item.icon}}"></i>
+					</a>
+    				{{item.name}}
+    			</a>
+    		</li>
+	    </ol>	
+    </div>
+   
+	<div class="st-content">
+		<div class="st-content-inner">
+			<!--<header class="codrops-header">
+				<h1>Sidebar Transitions <span>Transition effects for off-canvas views</span></h1></header>-->
+		</div><!-- /st-content-inner -->
+	</div><!-- /st-content -->
+</div><!-- /st-pusher -->

@@ -1,0 +1,8 @@
+<?php
+
+function db_disconnect()
+{
+mysql_close($connect);
+echo "Verbindung beendet";
+}
+?>

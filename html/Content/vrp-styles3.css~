@@ -1,0 +1,26 @@
+#content .blocks{
+	margin: 0;
+	padding: 0;
+}
+
+#content .blocks li{
+	position: relative;
+	display: inline-block;
+	width: 175px;
+	margin: 0 10px 10px 0;
+	overflow: hidden;
+
+	line-height: 70px;
+	text-align: center;
+	vertical-align: middle;
+
+	background-color: #eee;
+	border-bottom: 3px solid #CCC;
+}
+
+#content .blocks li:hover{
+	color: #265F01;
+}
+
+
+

@@ -1,0 +1,5 @@
+RewriteEngine On
+
+# force https for all URLs in /anmeldung
+RewriteCond %{SERVER_PORT} !^443$
+RewriteRule ^/?$ https://secure.example.com/contact/ [R=301,L]

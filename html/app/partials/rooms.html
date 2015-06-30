@@ -1,0 +1,20 @@
+<div id="list" class="list view">
+    <div class="container">
+        <div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-list">
+            <div class="cbp-vm-options">
+                <h3>Rooms</h3>
+            </div>
+
+             <div class="item" data-ng-repeat="room in rooms | orderBy:'id'">
+                <div>
+                    <h3 class="cbp-vm-title"> {{room.name}}</h3>
+                    
+                    <div class="btn-group">
+                         <a type="button" on-clickhref="#/room/{{room.id}}" class="cbp-vm-icon cbp-vm-add" data-ng-click="saveRoom({{room.id}})">Visual</a>
+                        <a type="button" class="cbp-vm-icon cbp-vm-add" href="#/list/{{room.id}}">List</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

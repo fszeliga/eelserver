@@ -1,0 +1,65 @@
+ <form class="editItem container">
+ 	<input data-ng-model="item.roomId" type="hidden">
+ 	<input data-ng-model="item.itemId" type="hidden">
+
+
+<div class="iconselect">
+    <p data-ng-repeat="icon in icons | orderBy:'id'" >
+        <i class="fa {{icon.src}}"></i> 
+        <span class="caption">{{icon.name}}</span>
+    </p>
+</div>
+<div class="col-md-4">
+ 	 <a class="icon-large cbp-vm-image" href="#"><i class="fa {{item.icon}}"></i></a>
+     <a data-ng-click="changeIcon()">change Icon</a>
+ </div>
+
+<div class="col-md-8">
+ 	<div class="Type">
+        Type:
+        <br />
+        <select data-ng-model="item.type" type="text" placeholder="First Name">
+        	<option data-ng-repeat="default in defaults | orderBy:'name'">{{default.name}}</option>
+        </select>
+    </div>
+    <div class="Name">
+        Bezeichnung
+        <br />
+        <input data-ng-model="item.name" type="text" placeholder="First Name" val="{{item.name}}">
+    </div>
+    <div class="position">
+        <span>Pos X:
+        <input data-ng-model="item.posx" type="text" val="item.height">
+        </span>
+        <span>Pos Y:
+        <input data-ng-model="item.posy" type="text" val="item.width">
+        </span>
+    </div>
+    <div class="size">
+    	<span>Höhe:
+        <input data-ng-model="item.height" type="text" placeholder="Höhe" val="item.height">
+        </span>
+        <span>Breite:
+        <input data-ng-model="item.width" type="text" placeholder="Breite" val="item.width">
+        </span>
+    </div>
+
+    <h2>Controls</h2>
+    <div data-ng-repeat="control in item.controls | orderBy:'order'">
+        <label for="controlname">Name:</label>
+        <input data-ng-model="control.name" type="text" name="controlname" />
+        <label for="sensor">Sensor:</label>
+        <input data-ng-model="control.sensor" type="text" name="controlname" />
+         
+         <h3>Values</h3>
+         <div data-ng-repeat="value in control.values | orderBy:'order'">
+            <label for="value">Name:</label>
+            <input data-ng-model="value.name" type="text" name="value">
+             <label for="value">Value:</label>
+            <input data-ng-model="value.value" type="text" name="value">
+        </div>
+    </div>
+
+</div>
+      <button id="submitCustomer" class="btn btn-primary" type="button" data-ng-click="insertItem()">Save</button>
+</form>

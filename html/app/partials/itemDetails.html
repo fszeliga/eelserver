@@ -1,0 +1,22 @@
+<a class="cbp-vm-image {{item.status}}" id="icon_{{item.sensor_id}}" data-ng-click="sendStatus({{item}})">
+    <i class="fa {{item.icon}}"></i>
+</a>
+<div>
+    <h3 class="cbp-vm-title"> {{item.name}}</h3>
+    <div class="cbp-vm-details">
+
+        <div class="item" data-ng-repeat="control in item.controls" style="padding:0">
+            <p>Value: <span id="value_{{item.sensor_id}}">{{control.active}}</span></p>
+
+            <div ng-show="item.continuous" style="padding:0; margin:0">
+		<div ui-slider min="0" max="50" ng-model="control.active"></div>
+               <input id="slider_{{item.sensor_id}}" type="range" name="value_slider" ng-model="control.active" ng-change="slideValue({{item.sensor_id}}, {{control.active}})" min="0" max="100" step="25">
+            </div>
+
+        </div>
+
+        <div ng-show="item.status == 'passive'">
+		<span  id="passive_value_text_{{item.sensor_id}}" >No value received yet</span>
+        </div>
+    </div>
+</div>

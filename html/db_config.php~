@@ -1,0 +1,11 @@
+<?php
+ 
+/*
+ * All database connection variables
+ */
+ 
+define('DB_USER', "vrpraktikant");
+define('DB_PASSWORD', "vrp2014");
+define('DB_DATABASE', "energylab");
+define('DB_SERVER', "141.3.151.147");
+?>adsf
