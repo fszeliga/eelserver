@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html ng-app="elab">
 <head>
   <title>EnergyLab</title>
@@ -6,6 +6,7 @@
   <script src="js_scripts/bootstrap.js"></script>
   
   <script>document.createElement("sensor")</script>
+  <script>document.createElement("txt_sensor_value")</script>
   <link rel="stylesheet" href="css_styles/sensor_grid.css">
   
 </head>
@@ -13,11 +14,13 @@
 
 <div ng-controller="sensorController">
 	<div>{{sensor_values}}</div>
-	<sensor ng-repeat="sensor in sensor_values.controllable">{{sensor.name + " " + sensor.sensor_id}}
-		<button ng-click="sensorClick(sensor.sensor_id)">Add one</button>
+	<div>angular.toJson(obj, pretty);</div>
+	<sensor ng-repeat="sensor in sensor_values.controllable" ng-click="sensorClick(sensor.sensor_id)">
+		{{sensor.name + " " + sensor.sensor_id}}
+		<txt_sensor_value>{{43}}</txt_sensor_value>
 	</sensor>
 
 </div>
 
 </body>
-</html> 
+</html>

@@ -1,7 +1,7 @@
 var app = angular.module('elab', []);
 
 app.controller('sensorController', function($scope, $http, $log) {
-  $http.get("http://127.0.0.1:8020/eel_website/php_scripts/get_all_sensors.php")
+  $http.get("http://127.0.0.1:8020/eel_website/php_scripts/get_all_sensors.php?callback=JSON_CALLBACK")
   	.success(function(response){$scope.sensor_list = response.records ;});
   	
   $scope.sensorClick = function(id){

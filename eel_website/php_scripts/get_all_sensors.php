@@ -97,39 +97,4 @@ if (mysql_num_rows($result) > 0) {
     echo json_encode($response);
 }
 
-/* will look like this
-
-{
-	"controllable": [
-		{
-            "id": "1",
-            "name": "iPhone 4S",
-            "striche": "300",
-        },
-	
-	
-	],
-	"not_controllable": [
-		{
-            "id": "1",
-            "name": "iPhone 4S",
-            "striche": "300"
-        },
-	
-	],
-	"success" : 1
-}
-
-
-ODER
-
-
-{
-{
-    "success": 0,
-    "message": "No data found"
-}
-}
-*/
-
 ?>
