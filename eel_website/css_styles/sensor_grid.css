@@ -1,4 +1,4 @@
-  sensor {
+sensor {
 	float: left;
 	position: relative;
 	height: 200px;
@@ -7,11 +7,24 @@
 	border-radius: 25px;
 	padding: 10px;
 	margin: 10px;
-	font-size: 1vw;
+	font-size: 20px;
 	text-align: center;
-  }
+	transition: background 0.3s ease;
+}
+
   
-sensor.txt_sensor_value{
+sensor:hover{
+	background: #aaa;
+	transform: scale(1.1);
+}
+  
+sensor txt_sensor_value{
 	display: block;
 	
+}
+
+
+/*used for setting the image font color*/
+sensor i{
+	color: #666
 }

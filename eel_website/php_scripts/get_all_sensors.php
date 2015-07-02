@@ -46,40 +46,26 @@ if (mysql_num_rows($result) > 0) {
     $response["not_controllable"] = array();
  
     while ($row = mysql_fetch_array($result)) {
-	
-	//controllable
+				// temp user array 
+		$sensor = array();
+		$sensor["sensor_id"] = $row["sensor_id"];
+		$sensor["name"] = $row["name"];
+		$sensor["name"] = utf8_encode($sensor["name"]);
+		$sensor["data_id"] = $row["data_id"];
+		$sensor["continuous"] = $row["continuous"];
+		$sensor["is_float"] = $row["is_float"];
+		$sensor["vlow"] = $row["vlow"];
+		$sensor["vhigh"] = $row["vhigh"];
+		$sensor["symbol"] = $row["symbol"];
+		$sensor["icon"] = $row["icon"];
+		$sensor["data_comment"] = $row["data_comment"];	
+		
+		//controllable
 		if($row["controllable"] == "1"){
-		
-		
-			// temp user array 
-			$sensor = array();
-			$sensor["sensor_id"] = $row["sensor_id"];
-			$sensor["name"] = $row["name"];
-			$sensor["name"] = utf8_encode($sensor["name"]);
-			$sensor["data_id"] = $row["data_id"];
-			$sensor["continuous"] = $row["continuous"];
-			$sensor["is_float"] = $row["is_float"];
-			$sensor["vlow"] = $row["vlow"];
-			$sensor["vhigh"] = $row["vhigh"];
-			$sensor["symbol"] = $row["symbol"];
-			$sensor["data_comment"] = $row["data_comment"];		
-		
+			$sensor["type"] = "active";
 			array_push($response["controllable"], $sensor);
 		} else if($row["controllable"] == "0"){ //not controllable
-		
-			// temp user array 
-			$sensor = array();
-			$sensor["sensor_id"] = $row["sensor_id"];
-			$sensor["name"] = $row["name"];
-			$sensor["name"] = utf8_encode($sensor["name"]);
-			$sensor["data_id"] = $row["data_id"];
-			$sensor["continuous"] = $row["continuous"];
-			$sensor["is_float"] = $row["is_float"];
-			$sensor["vlow"] = $row["vlow"];
-			$sensor["vhigh"] = $row["vhigh"];
-			$sensor["symbol"] = $row["symbol"];
-			$sensor["data_comment"] = $row["data_comment"];		
-
+			$sensor["type"] = "passive";
 			array_push($response["not_controllable"], $sensor);
 		}
     }
@@ -96,5 +82,21 @@ if (mysql_num_rows($result) > 0) {
     // echo no users JSON
     echo json_encode($response);
 }
+
+/*
+ 			// temp user array 
+			$sensor = array();
+			$sensor["sensor_id"] = $row["sensor_id"];
+			//$sensor["name"] = $row["name"];
+			$sensor["name"] = utf8_encode($sensor["name"]);
+			$sensor["data_id"] = $row["data_id"];
+			$sensor["type"] = "passive";
+			$sensor["continuous"] = $row["continuous"];
+			$sensor["is_float"] = $row["is_float"];
+			$sensor["vlow"] = $row["vlow"];
+			$sensor["vhigh"] = $row["vhigh"];
+			$sensor["symbol"] = $row["symbol"];
+			$sensor["icon"] = $row["icon"];
+			$sensor["data_comment"] = $row["data_comment"];		*/
 
 ?>

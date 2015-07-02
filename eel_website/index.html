@@ -2,23 +2,33 @@
 <html ng-app="elab">
 <head>
   <title>EnergyLab</title>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css_styles/angular-slider.min.css">
+  <link rel="stylesheet" href="css_styles/sensor_grid.css">
+
+
   <script src="js_scripts/angular.min.js"></script>
+  <script src="js_scripts/angular-slider.min.js"></script>
+
   <script src="js_scripts/bootstrap.js"></script>
+  <script src="js_scripts/controllers.js"></script>
+  <script src="js_scripts/services.js"></script>
   
   <script>document.createElement("sensor")</script>
   <script>document.createElement("txt_sensor_value")</script>
-  <link rel="stylesheet" href="css_styles/sensor_grid.css">
   
 </head>
 <body>
 
 <div ng-controller="sensorController">
-	<div>{{sensor_values}}</div>
-	<div>angular.toJson(obj, pretty);</div>
-	<sensor ng-repeat="sensor in sensor_values.controllable" ng-click="sensorClick(sensor.sensor_id)">
+	<sensor ng-repeat="sensor in sensors" ng-click="sensorClick(sensor)">
 		{{sensor.name + " " + sensor.sensor_id}}
-		<txt_sensor_value>{{43}}</txt_sensor_value>
+		<txt_sensor_value>{{sensor.value}}</txt_sensor_value>
+		<i class="fa {{sensor.icon}}" ng-show="sensor.value!=0"></i>
+		<i class="fa {{sensor.icon}}" ng-show="sensor.value==0"></i>
+		<slider floor="100" ceiling="1000" step="10" precision="2" ng-model="{{sensor.value}}"></slider>
 	</sensor>
+	<div>{{sensors}}</div>
 
 </div>
 
