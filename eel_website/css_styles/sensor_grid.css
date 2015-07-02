@@ -7,7 +7,6 @@ sensor {
 	border-radius: 25px;
 	padding: 10px;
 	margin: 10px;
-	font-size: 20px;
 	text-align: center;
 	transition: background 0.3s ease;
 }
@@ -17,14 +16,27 @@ sensor:hover{
 	background: #aaa;
 	transform: scale(1.1);
 }
-  
+
+sensor txt_sensor_name{
+	font-size: 20px;
+}
+
 sensor txt_sensor_value{
 	display: block;
-	
 }
 
 
 /*used for setting the image font color*/
+
 sensor i{
-	color: #666
+	font-size: 1px;
+	color: #000;
+}
+
+sensor i.on{
+	color: #48a770;
+}
+
+sensor i.off{
+	color: #444;
 }

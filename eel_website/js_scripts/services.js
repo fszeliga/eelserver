@@ -1,4 +1,4 @@
-app.service('room_service',function( $log){
+app.service('sensors_service',function( $log){
 
     this.getSensors = function(s_list){
         var sensors = [];
@@ -8,9 +8,9 @@ app.service('room_service',function( $log){
             type: 'passive',//passive or active, means not controllable (temp) or controllable  (door)
             //type: 'unknown',//continous or discrete, but already in the JSON
 	    	value: '0',
-			active: 0
+			active: 0,
+			received_init: 0
         };
-        
         
 		angular.forEach(s_list.not_controllable, function(sen) {
 		    $log.log(sen.name);

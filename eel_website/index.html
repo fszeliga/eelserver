@@ -13,8 +13,9 @@
   <script src="js_scripts/bootstrap.js"></script>
   <script src="js_scripts/controllers.js"></script>
   <script src="js_scripts/services.js"></script>
-  
+
   <script>document.createElement("sensor")</script>
+  <script>document.createElement("txt_sensor_name")</script>
   <script>document.createElement("txt_sensor_value")</script>
   
 </head>
@@ -22,11 +23,10 @@
 
 <div ng-controller="sensorController">
 	<sensor ng-repeat="sensor in sensors" ng-click="sensorClick(sensor)">
-		{{sensor.name + " " + sensor.sensor_id}}
+		<txt_sensor_name>{{sensor.name + " " + sensor.sensor_id}}</txt_sensor_name>
 		<txt_sensor_value>{{sensor.value}}</txt_sensor_value>
-		<i class="fa {{sensor.icon}}" ng-show="sensor.value!=0"></i>
-		<i class="fa {{sensor.icon}}" ng-show="sensor.value==0"></i>
-		<slider floor="100" ceiling="1000" step="10" precision="2" ng-model="{{sensor.value}}"></slider>
+		<i class="fa {{sensor.icon}} off"></i>
+		<!--slider floor="100" ceiling="1000" step="10" precision="2" ng-model="sensor.value"></slider-->
 	</sensor>
 	<div>{{sensors}}</div>
 
