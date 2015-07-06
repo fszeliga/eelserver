@@ -2,33 +2,53 @@
 <html ng-app="elab">
 <head>
   <title>EnergyLab</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="css_styles/angular-slider.min.css">
   <link rel="stylesheet" href="css_styles/sensor_grid.css">
+  <link rel="stylesheet" href="css_styles/bootstrap.min.css">
 
 
   <script src="js_scripts/angular.min.js"></script>
   <script src="js_scripts/angular-slider.min.js"></script>
-
   <script src="js_scripts/bootstrap.js"></script>
+  <script src="js_scripts/ui-bootstrap.min.js"></script>
+
+  <script src="js_scripts/init.js"></script>
   <script src="js_scripts/controllers.js"></script>
   <script src="js_scripts/services.js"></script>
 
   <script>document.createElement("sensor")</script>
   <script>document.createElement("txt_sensor_name")</script>
   <script>document.createElement("txt_sensor_value")</script>
+  <script>document.createElement("i_sensor")</script>
   
 </head>
-<body>
+<body style="background:#444">
 
 <div ng-controller="sensorController">
-	<sensor ng-repeat="sensor in sensors" ng-click="sensorClick(sensor)">
-		<txt_sensor_name>{{sensor.name + " " + sensor.sensor_id}}</txt_sensor_name>
-		<txt_sensor_value>{{sensor.value}}</txt_sensor_value>
-		<i class="fa {{sensor.icon}} off"></i>
-		<!--slider floor="100" ceiling="1000" step="10" precision="2" ng-model="sensor.value"></slider-->
-	</sensor>
-	<div>{{sensors}}</div>
+	<header>	
+		<label style="color:#444">Search Name: <input ng-model="sensorFilter.name"></label>
+		<label style="color:#444">Search ID: <input ng-model="sensorFilter.sensor_id"></label>
+
+		<div class="btn-group">
+			<label class="btn btn-primary" ng-model="sensorFilter" btn-radio="''">Both</label>
+			<label class="btn btn-primary" ng-model="sensorFilter" btn-radio="'passive'">Passive</label>
+			<label class="btn btn-primary" ng-model="sensorFilter" btn-radio="'active'">Active</label>
+		</div>
+
+	    
+	</header>
+
+	<div style="background:#444">
+		<sensor ng-repeat="sensor in sensor_list  | filter:sensorFilter:strict" ng-click="sensorClick(sensor)" tooltip="{{sensor}}" tooltip-class="popup" tooltip-popup-delay="1000">
+			<txt_sensor_name>{{sensor.name}}</txt_sensor_name>
+			<txt_sensor_value>{{sensor.value}}</txt_sensor_value>
+			<!--txt_sensor_value>{{sensor.active}}</txt_sensor_value-->
+			<i_sensor class="fa {{sensor.icon}} {{sensor.active}}"></i_sensor>
+		</sensor>
+	</div>
+
 
 </div>
 

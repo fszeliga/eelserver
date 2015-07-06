@@ -1,3 +1,7 @@
+body{
+	background: #444;
+}
+
 sensor {
 	float: left;
 	position: relative;
@@ -11,7 +15,14 @@ sensor {
 	transition: background 0.3s ease;
 }
 
-  
+.tooltip.popup .tooltip-inner{
+	height: 200px;
+	color: #FF0000;
+	background-color: #ffff66;
+	box-shadow: 0 6px 12px rgba(0,0,0,.175);
+	white-space:pre-wrap;
+}
+
 sensor:hover{
 	background: #aaa;
 	transform: scale(1.1);
@@ -28,15 +39,17 @@ sensor txt_sensor_value{
 
 /*used for setting the image font color*/
 
-sensor i{
-	font-size: 1px;
-	color: #000;
+i_sensor.standby{
+	font-size: 110px;
+	color: #eee;
 }
 
-sensor i.on{
+i_sensor.on{
+	font-size: 110px;
 	color: #48a770;
 }
 
-sensor i.off{
+i_sensor.off{
+	font-size: 110px;
 	color: #444;
 }

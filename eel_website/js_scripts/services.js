@@ -8,7 +8,7 @@ app.service('sensors_service',function( $log){
             type: 'passive',//passive or active, means not controllable (temp) or controllable  (door)
             //type: 'unknown',//continous or discrete, but already in the JSON
 	    	value: '0',
-			active: 0,
+			active: 'standby',
 			received_init: 0
         };
         
