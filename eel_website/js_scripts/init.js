@@ -27,3 +27,14 @@ app.filter('filterSensorByID', function() {
 	};
     
   });
+  
+  app.factory('jsonService', function($http) {
+
+    var getData = function() {
+
+        return $http({method:"GET", url:"http://imi-elab1.imi.kit.edu/get_all_sensors.php"}).then(function(result){
+            return result.data;
+        });
+    };
+    return { getData: getData };
+});

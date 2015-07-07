@@ -10,7 +10,7 @@ app.service('sensors_service',function( $log){
 			active: 'standby',
 			received_init: 0
         };
-        
+        console.log("getting non control sensors");
 		angular.forEach(s_list.not_controllable, function(sen) {
 		    $log.log(sen.name);
 		    //var sensor = angular.extend(sen, defaultSensor);

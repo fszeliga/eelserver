@@ -1,13 +1,13 @@
 /**
  * @author Filip
  */
-app.controller('sensorController', function ($scope, $log, $http, $filter, sensors_service) {
-	$http.get("http://127.0.0.1:8020/eel_website/php_scripts/get_all_sensors.php?callback=JSON_CALLBACK")
-  		 .success(function(response){$scope.sensor_list2 = response.records ;});
-	
+app.controller('sensorController', ["$scope", "$log", "$http", "$filter", "sensors_service", "jsonService", function ($scope, $log, $http, $filter, sensors_service, jsonService) {
+	delete $http.defaults.headers.common['X-Requested-With'];
+	var promiseResponse = $http.get("http://imi-elab1.imi.kit.edu/get_all_sensors.php");
+
 	var websocket;
 	
-	var sensor_values = {
+	var sensor_values2 = {
     "controllable": [
         {
             "sensor_id": "10",
@@ -318,9 +318,14 @@ app.controller('sensorController', function ($scope, $log, $http, $filter, senso
 	init();
 	
 	function init(){
-			$scope.sensor_list = sensors_service.getSensors(sensor_values);
-			// check if got json obeject (success tag), then check if sensor list created
-			connect();
+
+		promiseResponse.success(function(data, status, headers, config){
+				var sensors = data; 
+				$scope.sensor_list = sensors_service.getSensors(sensors);
+				connect();})
+       		.error(function(data, status, headers, config) { console.log("didnt work with that json" + status); });
+		
+		// check if got json obeject (success tag), then check if sensor list created
 	}
 	
 	$scope.sensorClick = function(sen){
@@ -436,4 +441,4 @@ app.controller('sensorController', function ($scope, $log, $http, $filter, senso
         return val;
     }
 
-});
+}]);
