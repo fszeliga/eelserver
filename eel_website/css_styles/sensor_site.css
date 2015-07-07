@@ -1,19 +1,33 @@
-div.sensor_container{
-	background:#444;
-	padding:10px;
-	width:auto;
-	margin-left: auto;
-	margin-right: auto;
+body { 
+	padding-top: 55px; 
 }
+
+div.sensor_container{
+	background:#444; 
+	display:flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: space-around;
+}
+
+div.sensor_dummy{
+	float: left;
+	position: relative;
+	min-width:125px;
+	max-width:200px;
+	width: 12.5%;
+	background: transparent;
+	margin: 10px;
+}
+
 div.sensor {
 	float: left;
 	position: relative;
-	min-width:100px;
+	min-width:125px;
 	max-width:200px;
 	width: 12.5%;
 	background: #ddd;
 	border-radius: 25px;
-	padding: 10px;
 	margin: 10px;
 	text-align: center;
 	transition: background 0.3s ease;
@@ -101,9 +115,19 @@ div.sensor_data i.off{
 	white-space:pre-wrap;
 }
 
-.vr-question-circle.blue {
+.icon-vr-questionmark-circle.blue {
   color:#428bca;
   float:right;
-  font-size:3vh;
-  margin:10px;
+  font-size:2vh;
 }
+
+nav.center{
+	padding:10px;
+	vertical-align:center;
+}
+
+.divider-vertical{
+	margin-left:10px;
+	margin-right:10px;
+}
+

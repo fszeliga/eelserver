@@ -102,7 +102,7 @@ app.controller('sensorController', function ($scope, $log, $http, $filter, senso
             "vlow": "0",
             "vhigh": "100",
             "symbol": "NA",
-            "icon": "vr-align-justify",
+            "icon": "vr-blinds",
             "data_comment": "boolean values for simply on\/of, controllable by user"
         }
     ],
@@ -116,7 +116,7 @@ app.controller('sensorController', function ($scope, $log, $http, $filter, senso
             "vlow": "-100",
             "vhigh": "100",
             "symbol": "\u00b0C",
-            "icon": "fa-temp",
+            "icon": "vr-temp",
             "data_comment": "used for temperature in Celsius"
         },
         {
@@ -140,7 +140,7 @@ app.controller('sensorController', function ($scope, $log, $http, $filter, senso
             "vlow": "-100",
             "vhigh": "100",
             "symbol": "\u00b0C",
-            "icon": "fa-temp",
+            "icon": "vr-temp",
             "data_comment": "used for temperature in Celsius"
         },
         {
