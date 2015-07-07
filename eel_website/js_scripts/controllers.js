@@ -322,10 +322,15 @@ app.controller('sensorController', ["$scope", "$log", "$http", "$filter", "senso
 		promiseResponse.success(function(data, status, headers, config){
 				var sensors = data; 
 				$scope.sensor_list = sensors_service.getSensors(sensors);
-				connect();})
+				connect();
+				hoverTouchUnstick();})
        		.error(function(data, status, headers, config) { console.log("didnt work with that json" + status); });
 		
 		// check if got json obeject (success tag), then check if sensor list created
+		var touch = window.ontouchstart
+            || navigator.MaxTouchPoints > 0
+            || navigator.msMaxTouchPoints > 0;
+
 	}
 	
 	$scope.sensorClick = function(sen){
@@ -440,5 +445,28 @@ app.controller('sensorController', ["$scope", "$log", "$http", "$filter", "senso
 		var val = x << 8 | y;
         return val;
     }
+
+	function hoverTouchUnstick() {
+	  // Check if the device supports touch events
+	  if('ontouchstart' in document.documentElement) {
+		// Loop through each stylesheet
+		for(var sheetI = document.styleSheets.length - 1; sheetI >= 0; sheetI--) {
+		  var sheet = document.styleSheets[sheetI];
+		  // Verify if cssRules exists in sheet
+		  if(sheet.cssRules) {
+			// Loop through each rule in sheet
+			for(var ruleI = sheet.cssRules.length - 1; ruleI >= 0; ruleI--) {
+			  var rule = sheet.cssRules[ruleI];
+			  // Verify rule has selector text
+			  if(rule.selectorText) {
+				// Replace hover psuedo-class with active psuedo-class
+				rule.selectorText = rule.selectorText.replace(":hover", ":active");
+			  }
+			}
+		  }
+		}
+	  }
+	}
+
 
 }]);
