@@ -4,7 +4,6 @@ app.service('sensors_service',function( $log){
         var sensors = [];
 
         var defaultSensor = {
-            icon: 'fa-square-o',
             type: 'passive',//passive or active, means not controllable (temp) or controllable  (door)
             //type: 'unknown',//continous or discrete, but already in the JSON
 	    	value: '0',
@@ -14,17 +13,19 @@ app.service('sensors_service',function( $log){
         
 		angular.forEach(s_list.not_controllable, function(sen) {
 		    $log.log(sen.name);
-		    var sensor = angular.extend(sen, defaultSensor);
+		    //var sensor = angular.extend(sen, defaultSensor);
+		    var sensor = angular.merge(sen, defaultSensor);
             sensors.push(sensor);
 		});
 		
 		angular.forEach(s_list.controllable, function(sen) {
 		    $log.log(sen.name);
-		    var sensor = angular.extend(sen, defaultSensor);
+		    //var sensor = angular.extend(sen, defaultSensor);
+		    var sensor = angular.merge(sen, defaultSensor);
 			sensor.type = 'active';
             sensors.push(sensor);
 		});
-
+/*
 		angular.forEach(sensors,function(sen){
         //$(sensors).each(function(i){
         	var name = sen.name;
@@ -56,7 +57,7 @@ app.service('sensors_service',function( $log){
 			   sen.icon = 'fa-bullseye';
 			}
         });
-
+*/
         return sensors;
    };
 

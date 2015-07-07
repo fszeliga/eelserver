@@ -1,0 +1,109 @@
+div.sensor_container{
+	background:#444;
+	padding:10px;
+	width:auto;
+	margin-left: auto;
+	margin-right: auto;
+}
+div.sensor {
+	float: left;
+	position: relative;
+	min-width:100px;
+	max-width:200px;
+	width: 12.5%;
+	background: #ddd;
+	border-radius: 25px;
+	padding: 10px;
+	margin: 10px;
+	text-align: center;
+	transition: background 0.3s ease;
+}
+
+div.sensor:hover{
+	background: #aaa;
+	transform: scale(1.1);
+}
+
+div.dummy {
+	margin-top: 100%;
+}
+
+div.sensor_data{
+	position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+span.sensor_name{
+	width:100%;
+	text-align: center;
+	position:absolute;
+ 	top:5%;
+	display: block;
+	font-size:1.1vw;
+}
+
+span.sensor_value{
+	width:100%;
+	text-align: center;
+	position:absolute;
+ 	bottom:5%;
+	display: block;
+	font-size:1vw;
+}
+
+
+/*used for setting the image font color*/
+
+div.sensor_data i{
+	position:absolute;
+	top:20%;
+	left:50%;
+	margin-right: -50%;
+	transform: translate(-50%, -50%);
+
+}
+
+
+div.sensor_data i.standby{
+	position:absolute;
+	top:50%;
+	left:50%;
+	font-size: 5vw;
+	color: #eee;
+}
+
+div.sensor_data i.on{
+	position:absolute;
+	top:50%;
+	left:50%;
+	font-size: 5vw;
+	color: #48a770;
+}
+
+div.sensor_data i.off{
+	position:absolute;
+	top:50%;
+	left:50%;
+	font-size: 5vw;
+	color: #444;
+}
+
+
+.tooltip.popup .tooltip-inner{
+	text-align:left;
+	height: 200px;
+	color: #FF0000;
+	background-color: #ffff66;
+	box-shadow: 0 6px 12px rgba(0,0,0,.175);
+	white-space:pre-wrap;
+}
+
+.vr-question-circle.blue {
+  color:#428bca;
+  float:right;
+  font-size:3vh;
+  margin:10px;
+}
