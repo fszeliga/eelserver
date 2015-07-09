@@ -30,11 +30,18 @@ div.sensor {
 	border-radius: 25px;
 	margin: 10px;
 	text-align: center;
-	transition: background 0.3s ease;
+
 }
 
-div.sensor:hover{
+.no-touch div.sensor:hover{
 	background: #aaa;
+	transition: background 0.3s ease;
+	transform: scale(1.1);
+}
+
+div.sensor:active{
+	background: #aaa;
+	transition: background 0.3s ease;
 	transform: scale(1.1);
 }
 

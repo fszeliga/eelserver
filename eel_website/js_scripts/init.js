@@ -28,7 +28,7 @@ app.filter('filterSensorByID', function() {
     
   });
   
-  app.factory('jsonService', function($http) {
+ app.factory('jsonService', function($http) {
 
     var getData = function() {
 
@@ -38,3 +38,4 @@ app.filter('filterSensorByID', function() {
     };
     return { getData: getData };
 });
+

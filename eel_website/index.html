@@ -25,7 +25,7 @@
   <script>document.createElement("i_sensor")</script>
   
 </head>
-<body style="background:#444">
+<body ontouchstart="" style="background:#444">
 
 <div ng-controller="sensorController">
 	<nav class="navbar navbar-default navbar-fixed-top center">
@@ -45,7 +45,7 @@
 	</nav>
 	
 	<div class="sensor_container">
-		<div class="sensor" ng-repeat="sensor in sensor_list  | filter:sensorFilter:strict" ng-click="sensorClick(sensor)" tooltip="{{sensor | json}}" tooltip-class="popup" tooltip-popup-delay="1000">
+		<div class="sensor" ng-repeat="sensor in sensor_list  | filter:sensorFilter:strict" ng-click="sensorClick(sensor)" >
 			<div class="dummy"></div>
 			<div class="sensor_data">
 				<span class="sensor_name">{{sensor.name}}</span>

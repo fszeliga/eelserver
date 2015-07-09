@@ -323,7 +323,8 @@ app.controller('sensorController', ["$scope", "$log", "$http", "$filter", "senso
 				var sensors = data; 
 				$scope.sensor_list = sensors_service.getSensors(sensors);
 				connect();
-				hoverTouchUnstick();})
+				if (!("ontouchstart" in document.documentElement)) {document.documentElement.className += " no-touch";}
+			})
        		.error(function(data, status, headers, config) { console.log("didnt work with that json" + status); });
 		
 		// check if got json obeject (success tag), then check if sensor list created
@@ -467,6 +468,29 @@ app.controller('sensorController', ["$scope", "$log", "$http", "$filter", "senso
 		}
 	  }
 	}
+	
+	function removeHoverCSSRule() {
+	  if ('createTouch' in document) {
+		try {
+		  var ignore = /:hover/;
+		  for (var i = 0; i < document.styleSheets.length; i++) {
+			var sheet = document.styleSheets[i];
+			if (!sheet.cssRules) {
+			  continue;
+			}
+			for (var j = sheet.cssRules.length - 1; j >= 0; j--) {
+			  var rule = sheet.cssRules[j];
+			  if (rule.type === CSSRule.STYLE_RULE && ignore.test(rule.selectorText)) {
+				sheet.deleteRule(j);
+			  }
+			}
+		  }
+		}
+		catch(e) {
+		}
+  }
+}
+
 
 
 }]);
