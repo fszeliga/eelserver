@@ -55,6 +55,7 @@ if (mysqli_num_rows($result) > 0) {
 		$sensor["vlow"] = utf8_encode($row["vlow"]);
 		$sensor["vhigh"] = utf8_encode($row["vhigh"]);
 		$sensor["symbol"] = utf8_encode($row["symbol"]);
+		$sensor["icon"] = utf8_encode($row["icon"]);
 		$sensor["data_comment"] = utf8_encode($row["data_comment"]);	
 		
 		if($row["controllable"] == "1"){
