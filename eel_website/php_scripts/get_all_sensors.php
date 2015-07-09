@@ -26,6 +26,7 @@ if ($db->connect_error) {
 $result = $db->query("SELECT sensor_code_map.code code,
 sensor_code_map.id sensor_id, 
 sensor_code_map.name name,
+sensor_code_map.icon icon,
 df.id data_id,
 df.controllable controllable, 
 df.continuous continuous, 
