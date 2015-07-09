@@ -46,36 +46,20 @@ if (mysqli_num_rows($result) > 0) {
  
     while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
 	//controllable
+		$sensor = array();
+		$sensor["sensor_id"] = utf8_encode($row["sensor_id"]);
+		$sensor["name"] = utf8_encode($row["name"]);
+		$sensor["data_id"] = utf8_encode($row["data_id"]);
+		$sensor["continuous"] = utf8_encode($row["continuous"]);
+		$sensor["is_float"] = utf8_encode($row["is_float"]);
+		$sensor["vlow"] = utf8_encode($row["vlow"]);
+		$sensor["vhigh"] = utf8_encode($row["vhigh"]);
+		$sensor["symbol"] = utf8_encode($row["symbol"]);
+		$sensor["data_comment"] = utf8_encode($row["data_comment"]);	
+		
 		if($row["controllable"] == "1"){
-		
-			// temp user array 
-			$sensor = array();
-			$sensor["sensor_id"] = $row["sensor_id"];
-			$sensor["name"] = $row["name"];
-			$sensor["name"] = utf8_encode($sensor["name"]);
-			$sensor["data_id"] = $row["data_id"];
-			$sensor["continuous"] = $row["continuous"];
-			$sensor["is_float"] = $row["is_float"];
-			$sensor["vlow"] = $row["vlow"];
-			$sensor["vhigh"] = $row["vhigh"];
-			$sensor["symbol"] = utf8_encode($row["symbol"]);
-			$sensor["data_comment"] = $row["data_comment"];		
-		
 			array_push($response["controllable"], $sensor);
 		} else if($row["controllable"] == "0"){ //not controllable
-			// temp user array 
-			$sensor = array();
-			$sensor["sensor_id"] = $row["sensor_id"];
-			$sensor["name"] = $row["name"];
-			$sensor["name"] = utf8_encode($sensor["name"]);
-			$sensor["data_id"] = $row["data_id"];
-			$sensor["continuous"] = $row["continuous"];
-			$sensor["is_float"] = $row["is_float"];
-			$sensor["vlow"] = $row["vlow"];
-			$sensor["vhigh"] = $row["vhigh"];
-			$sensor["symbol"] = utf8_encode($row["symbol"]);
-			$sensor["data_comment"] = $row["data_comment"];		
-
 			array_push($response["not_controllable"], $sensor);
 		}
     }
