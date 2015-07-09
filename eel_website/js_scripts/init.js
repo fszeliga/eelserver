@@ -38,4 +38,3 @@ app.filter('filterSensorByID', function() {
     };
     return { getData: getData };
 });
-

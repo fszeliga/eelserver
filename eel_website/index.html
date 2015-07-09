@@ -1,63 +1,93 @@
 <!DOCTYPE html>
 <html ng-app="elab">
-<head>
-  <title>EnergyLab</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!--link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"-->
-  <link rel="stylesheet" href="css_styles/bootstrap.min.css"> 
-  <link rel="stylesheet" href="css_styles/angular-slider.min.css">
-  <link rel="stylesheet" href="css_styles/sensor_site.css">
-  <link rel="stylesheet" href="css_styles/custom_font.css">
+	<head>
+		<title>EnergyLab</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!--link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"-->
+		<link rel="stylesheet" href="css_styles/bootstrap.min.css">
+		<!--link rel="stylesheet" href="css_styles/angular-slider.min.css"-->
+		<link rel="stylesheet" href="css_styles/sensor_site.css">
+		<link rel="stylesheet" href="css_styles/custom_font.css">
 
+		<script src="js_scripts/jquery-2.1.4.min.js"></script>
+		<script src="js_scripts/bootstrap.min.js"></script>
+		<script src="js_scripts/angular.min.js"></script>
+		<script src="js_scripts/angular-slider.min.js"></script>
+		<script src="js_scripts/ui-bootstrap.min.js"></script>
+		<!--download custom version, smaller!!!--><!--used by ui.bootstrap to some bind angularjs and bootstrap-->
 
+		<script src="js_scripts/init.js"></script>
+		<script src="js_scripts/controllers.js"></script>
+		<script src="js_scripts/services.js"></script>
 
-  <script src="js_scripts/angular.min.js"></script>
-  <script src="js_scripts/angular-slider.min.js"></script>
-  <script src="js_scripts/ui-bootstrap.min.js"></script> <!--download custom version, smaller!!!--><!--used by ui.bootstrap to some bind angularjs and bootstrap-->
+		<script>
+			document.createElement("sensor")
+		</script>
+		<script>
+			document.createElement("txt_sensor_name")
+		</script>
+		<script>
+			document.createElement("txt_sensor_value")
+		</script>
+		<script>
+			document.createElement("i_sensor")
+		</script>
 
-  <script src="js_scripts/init.js"></script>
-  <script src="js_scripts/controllers.js"></script>
-  <script src="js_scripts/services.js"></script>
+	</head>
+	<body ontouchstart="" >
 
-  <script>document.createElement("sensor")</script>
-  <script>document.createElement("txt_sensor_name")</script>
-  <script>document.createElement("txt_sensor_value")</script>
-  <script>document.createElement("i_sensor")</script>
-  
-</head>
-<body ontouchstart="" style="background:#444">
+		<div ng-controller="sensorController">
 
-<div ng-controller="sensorController">
-	<nav class="navbar navbar-default navbar-fixed-top center">
-		<div class="container-fluid">
-			<label>Search Name: <input ng-model="sensorFilter.name"></label>
-			<span class="divider-vertical"></span>
-			<label>Search ID: <input ng-model="sensorFilter.sensor_id"></label>
-			<span class="divider-vertical"></span>
-			<label>Show:</label>
-			<div class="btn-group">
-				<label class="btn btn-primary" ng-model="sensorFilter" btn-radio="''">Both</label>
-				<label class="btn btn-primary" ng-model="sensorFilter" btn-radio="'passive'">Passive</label>
-				<label class="btn btn-primary" ng-model="sensorFilter" btn-radio="'active'">Active</label>
+			<nav class="navbar navbar-default navbar-fixed-top">
+				<div class="container-fluid">
+					<!-- Brand and toggle get grouped for better mobile display -->
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#">Energy Efficiency Lab</a>
+					</div>
+
+					<!-- Collect the nav links, forms, and other content for toggling -->
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+						<ul class="nav navbar-nav navbar-right" >
+							<li>
+								<form class="navbar-form">
+									<div class="input-group">
+										<span class="input-group-addon"><span class="badge" style="margin-right:5px">{{filteredItems.length}}</span>Search: </span>
+										<input type="text" class="form-control" placeholder="Sensor Name" ng-model="sensorFilter.name"/>
+									</div>
+								</form>
+							</li>
+							<li>
+								<div class="btn-group" style="padding-right:5px">
+									<a class="btn btn-primary navbar-btn" ng-model="sensorFilter" btn-radio="''">Both</a>
+									<a class="btn btn-primary navbar-btn" ng-model="sensorFilter" btn-radio="'passive'">Passive</a>
+									<a class="btn btn-primary navbar-btn" ng-model="sensorFilter" btn-radio="'active'">Active</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+
+			<div class="sensor_container">
+				<div class="sensor" ng-repeat="sensor in filteredItems = (sensor_list | filter:sensorFilter:strict)" ng-click="sensorClick(sensor)" >
+					<div class="dummy"></div>
+					<div class="sensor_data">
+						<span class="sensor_name">{{sensor.name}}</span>
+						<!--txt_sensor_value>{{sensor.active}}</txt_sensor_value-->
+						<i class="icon-{{sensor.icon}} {{sensor.active}}"></i>
+						<span class="sensor_value" ng-if="sensor.continuous!=0">{{sensor.value}}{{sensor.symbol | filter_symbols}}</span>
+					</div>
+				</div>
+				<div class="sensor_dummy" ng-repeat="n in [1,2,3,4,5,6,7,8,9]"></div>
 			</div>
-			<i class="icon-vr-questionmark-circle blue"></i>
 		</div>
-	</nav>
-	
-	<div class="sensor_container">
-		<div class="sensor" ng-repeat="sensor in sensor_list  | filter:sensorFilter:strict" ng-click="sensorClick(sensor)" >
-			<div class="dummy"></div>
-			<div class="sensor_data">
-				<span class="sensor_name">{{sensor.name}}</span>
-				<!--txt_sensor_value>{{sensor.active}}</txt_sensor_value-->
-				<i class="icon-{{sensor.icon}} {{sensor.active}}"></i>
-				<span class="sensor_value" ng-if="sensor.continuous!=0">{{sensor.value}}{{sensor.symbol | filter_symbols}}</span>	
-			</div>
-		</div>
-		<div class="sensor_dummy" ng-repeat="n in [1,2,3,4,5,6,7,8,9]"></div>
-	</div>
-	{{customers | json}}
-</div>
 
-</body>
+	</body>
 </html>
