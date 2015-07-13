@@ -1,0 +1,49 @@
+@font-face {
+	font-family: 'icomoon';
+	src:url('fonts/icomoon.eot?-eaq29v');
+	src:url('fonts/icomoon.eot?#iefix-eaq29v') format('embedded-opentype'),
+		url('fonts/icomoon.ttf?-eaq29v') format('truetype'),
+		url('fonts/icomoon.woff?-eaq29v') format('woff'),
+		url('fonts/icomoon.svg?-eaq29v#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-"], [class*=" icon-"] {
+	font-family: 'icomoon';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.icon-vr-blinds:before {
+	content: "\f039";
+}
+.icon-vr-camera:before {
+	content: "\f03d";
+}
+.icon-vr-window:before {
+	content: "\f03e";
+}
+.icon-vr-drop:before {
+	content: "\f043";
+}
+.icon-vr-questionmark-circle:before {
+	content: "\f059";
+}
+.icon-vr-flame:before {
+	content: "\f06d";
+}
+.icon-vr-bolt:before {
+	content: "\f0e7";
+}
+.icon-vr-lightbulb:before {
+	content: "\f0eb";
+}

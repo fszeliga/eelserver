@@ -1,0 +1,74 @@
+@font-face {
+	font-family: 'vrp-font';
+	src: url('../fonts/vrp-font.eot?-eaq29v');
+	src: url('../fonts/vrp-font.eot?#iefix-eaq29v') format('embedded-opentype'), url('../fonts/vrp-font.ttf?-eaq29v') format('truetype'), url('../fonts/vrp-font.woff?-eaq29v') format('woff'), url('../fonts/vrp-font.svg?-eaq29v#icomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+[class^="icon-vr-"], [class*=" icon-vr-"] {
+	vertical-align: center;
+	font-family: 'vrp-font';
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/*these are the custom fonts*/
+
+/*generated through http://www.icomoon.io*/
+.icon-vr-questionmark:before {
+	content: "\f000";
+}
+.icon-vr-chair:before {
+	content: "\f001";
+}
+.icon-vr-door:before {
+	content: "\f002";
+}
+.icon-vr-fan:before {
+	content: "\f003";
+}
+.icon-vr-hum:before {
+	content: "\f004";
+}
+.icon-vr-temp:before {
+	content: "\f005";
+}
+.icon-vr-blinds:before {
+	content: "\f006";
+}
+.icon-vr-camera:before {
+	content: "\f007";
+}
+.icon-vr-window:before {
+	content: "\f008";
+}
+.icon-vr-drop:before {
+	content: "\f009";
+}
+.icon-vr-questionmark-circle:before {
+	content: "\f00a";
+}
+.icon-vr-flame:before {
+	content: "\f00b";
+}
+.icon-vr-bolt:before {
+	content: "\f00c";
+}
+.icon-vr-lightbulb:before {
+	content: "\f00d";
+}
+.icon-vr-pc:before {
+	content: "\f00e";
+}
+.icon-vr-day-night:before {
+	content: "\f00f";
+}
+
