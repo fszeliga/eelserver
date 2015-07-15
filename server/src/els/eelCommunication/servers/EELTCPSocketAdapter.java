@@ -38,7 +38,6 @@ public abstract class EELTCPSocketAdapter extends EELTCPSocketListener {
             this.clients.add(s);
         }
         onOpen(s);
-        Utils.write("[EELTCPSocketAdapter] - client connected : new count " + Integer.toString(clients.size()) , Utils.ANSI_CYAN);
     }
 
     public void inputDisconnected(Socket socket) throws IOException {
@@ -51,6 +50,5 @@ public abstract class EELTCPSocketAdapter extends EELTCPSocketListener {
         synchronized (clients){
             clients.remove(socket);
         }
-        Utils.write("[EELTCPSocketAdapter] - client disconnected : new count " + Integer.toString(clients.size()) , Utils.ANSI_CYAN);
     }
 }
