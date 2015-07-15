@@ -182,7 +182,7 @@ public class Sensor extends JPanel implements ChangeListener, ActionListener {
 	    	msg.setEventId(id);
 	    	msg.setData(source.getValue());
 	    	
-	    	server.updateAllOnServerEvent(msg.getMessageAsByteArray());
+	    	//server.updateAllOnServerEvent(msg.getMessageAsByteArray());
 	    }
 	}
 
@@ -200,6 +200,6 @@ public class Sensor extends JPanel implements ChangeListener, ActionListener {
 			on.setText("Turn OFF");
 	    	msg.setData(0);
 		}
-    	server.updateAllOnServerEvent(msg.getMessageAsByteArray());
+    	//server.updateAllOnServerEvent(msg.getMessageAsByteArray());
 	}
 }

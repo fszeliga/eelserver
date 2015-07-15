@@ -130,4 +130,26 @@ public class Utils {
 
     }
 
+    public static void write(byte[] b, String c) {
+        System.out.print(c + byteArrayToHexString(b));
+        System.out.println(ANSI_RESET);
+        System.out.println("");
+    }
+
+    public static void write(String s, String c) {
+        System.out.print(c + s);
+        System.out.println(ANSI_RESET);
+        System.out.println("");
+    }
+
+    public static void write(byte[] b) {
+        write(b, ANSI_WHITE);
+        System.out.println(ANSI_RESET);
+        System.out.println("");
+    }
+
+    public static void write(String s) {
+        write(s, ANSI_WHITE);
+
+    }
 }

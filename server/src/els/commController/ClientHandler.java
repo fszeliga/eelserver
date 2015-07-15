@@ -8,6 +8,7 @@ import els.database.DatabaseController;
  *	used only for stuff that Server says to do. update clients, disconnect them...
  */
 public class ClientHandler {
+	/*
 	private ELSServer server;
 	private CopyOnWriteArrayList <Client> clients;
 	private CopyOnWriteArrayList<Sensor> sensorValues = new CopyOnWriteArrayList<Sensor>();
@@ -158,5 +159,5 @@ public class ClientHandler {
 			if(s.getID()==id) return true;
 		return false;
 	}
-
+*/
 }

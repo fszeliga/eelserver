@@ -5,12 +5,12 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
-import els.eelCommunication.EELConnection;
+import els.eelCommunication.sockets.EELSocket;
 import els.threading.JavaTCP;
 
 
 public class Client {
-	private EELConnection connSend;
+	private EELSocket connSend;
 
 
 	//private String clientIPPort = null;
@@ -43,7 +43,7 @@ public class Client {
 
 	public void notifyEvent(byte[] testing) {
 		//System.out.println(" notifyData called on client: " + this.clientSocket.getRemoteSocketAddress().toString());
-		clientThread.write(testing);
+		//clientThread.write(testing);
 	}
 	
 	public synchronized void registerIncomingMessage(byte[] buffer) {
@@ -66,9 +66,9 @@ public class Client {
 		
 		//if request current value for sensor
 		if(message.isRequestMessage()){
-			int data = handler.getValueFromID(Utils.byteArrayToUnsignedInt(message.getEventId()));
-			if(handler.isSensorRegistered(Utils.byteArrayToUnsignedInt(message.getEventId()))) message.setData(data);
-			else return;//TODO change to send a flag with dataNA
+			//int data = handler.getValueFromID(Utils.byteArrayToUnsignedInt(message.getEventId()));
+			//if(handler.isSensorRegistered(Utils.byteArrayToUnsignedInt(message.getEventId()))) message.setData(data);
+			//else return;//TODO change to send a flag with dataNA
 			notifyEvent(message.getMessageAsByteArray());
 			Utils.print(Utils.ANSI_CYAN, "Client requested value for id: " + Utils.byteArrayToHexString(new byte[]{message.getEventId()[0],message.getEventId()[1]}));
 		}
@@ -90,7 +90,7 @@ public class Client {
 
 		//check if message is a private message
 		if(message.sendToAll() && !message.isRequestMessage()){
-			handler.recieveClientMessage(message, this);
+			///handler.recieveClientMessage(message, this);
 		} else {
 			Utils.print(Utils.ANSI_CYAN, "Message is a private Message");
 		}
@@ -98,7 +98,7 @@ public class Client {
 	}
 	
 	public void writeMessage(String msg){
-		handler.writeMessage(msg);
+		//handler.writeMessage(msg);
 	}
 	
 	public void registerHandler(ClientHandler handler) {
@@ -144,7 +144,7 @@ public class Client {
 		} catch (IOException e) {
 			System.out.println("IOException in Client.disconnect()");
 		} finally {
-			handler.disconnectClient(this);
+			//handler.disconnectClient(this);
 		}
 	}	
 	

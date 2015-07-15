@@ -47,11 +47,26 @@ import java.util.logging.Logger;
  *
  */
 public class ELSGUI extends JFrame implements ListSelectionListener, ActionListener, Comparable<Object>, Runnable {
+    @Override
+    public void actionPerformed(ActionEvent e) {
 
-    /**
-     *
-     */
+    }
 
+    @Override
+    public int compareTo(Object o) {
+        return 0;
+    }
+
+    @Override
+    public void valueChanged(ListSelectionEvent e) {
+
+    }
+
+    @Override
+    public void run() {
+
+    }
+/*
     public static final String DEFAULT_FONT = "Courier";
     public static final int DEFAULT_FONT_SIZE = 12;
 
@@ -425,5 +440,5 @@ public class ELSGUI extends JFrame implements ListSelectionListener, ActionListe
             scrollToBottom();
         }
     }
-
+*/
 }
