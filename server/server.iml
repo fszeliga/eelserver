@@ -10,5 +10,6 @@
     <orderEntry type="library" name="java_websocket" level="project" />
     <orderEntry type="library" name="commons-io-2.4" level="project" />
     <orderEntry type="library" name="java_websocket" level="project" />
+    <orderEntry type="library" name="commons-io-2.4" level="project" />
   </component>
 </module>

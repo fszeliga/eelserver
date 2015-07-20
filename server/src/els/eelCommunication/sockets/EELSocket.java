@@ -7,5 +7,6 @@ import java.net.InetAddress;
  */
 public interface EELSocket {
     void sendMessage(byte[] msg);
+    void close();
     InetAddress getAddress();
 }

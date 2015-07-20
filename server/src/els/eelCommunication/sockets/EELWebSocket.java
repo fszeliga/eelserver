@@ -22,6 +22,11 @@ public class EELWebSocket implements EELSocket {
     }
 
     @Override
+    public void close() {
+        socket.close();
+    }
+
+    @Override
     public InetAddress getAddress() {
         return socket.getRemoteSocketAddress().getAddress();
     }

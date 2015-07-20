@@ -6,7 +6,6 @@ import org.java_websocket.WebSocket;
 import org.java_websocket.handshake.ClientHandshake;
 import org.java_websocket.server.WebSocketServer;
 
-import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
@@ -16,26 +15,29 @@ import java.util.List;
 /**
  * Created by Filip on 2015-07-13.
  */
-public class EELWebSocketServer extends WebSocketServer{
+public class EELWebSocketServer extends WebSocketServer implements EELServerInterface{
     private List<EELWebSocket> sockets = new ArrayList<>();
+
     public EELWebSocketServer(InetSocketAddress address) {
         super(address);
+        boolean success = EELCommServer.the().registerServer(this);
+        //todo check if created successfully
     }
 
     @Override
     public void onOpen(WebSocket webSocket, ClientHandshake clientHandshake) {
-        EELServer.the().registerClient(isOpenSocket(webSocket));
+        EELCommServer.the().registerClient(isOpenSocket(webSocket));
     }
 
     @Override
     public void onClose(WebSocket webSocket, int i, String s, boolean b) {
-        EELServer.the().removeClient(isOpenSocketClose(webSocket));
+        EELCommServer.the().removeClient(isOpenSocketClose(webSocket));
     }
 
 
     @Override
     public void onMessage(WebSocket webSocket, ByteBuffer b) {
-        EELServer.the().receiveMessage(new EELWebSocket(webSocket), b.array());
+        EELCommServer.the().receiveMessage(new EELWebSocket(webSocket), b.array());
     }
 
     @Override
@@ -73,5 +75,12 @@ public class EELWebSocketServer extends WebSocketServer{
             }
         }
         return new EELWebSocket(null);
+    }
+
+    @Override
+    public void onServerStop() {
+        for (EELWebSocket socket : sockets) {
+            socket.close();
+        }
     }
 }

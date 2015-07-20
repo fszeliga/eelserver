@@ -1,0 +1,47 @@
+.root {
+    -fx-background-color: #444;
+}
+
+.button {
+    -fx-text-fill: white;
+    //-fx-font-family: "Arial Narrow";
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(#2A5058, #61a2b1);
+}
+
+#sensor_tile {
+    -fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #888, #aaa);
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-border-radius: 10 10 10 10;
+    -fx-background-radius: 10 10 10 10;
+}
+
+#sensor_name {
+    -fx-color: #000;
+}
+
+#info_label{
+    -fx-color: #000;
+}
+
+#sensors_scrollpane{
+    -fx-background-color: #444;
+            -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+#sensors_flowpane{
+    -fx-background-color: #444;
+}
+
+#info_bar{
+    -fx-background-color: linear-gradient(#665, #333);
+}
+
+.padding-top{
+    -fx-padding-top: 10px;
+}

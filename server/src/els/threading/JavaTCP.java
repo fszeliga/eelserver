@@ -1,14 +1,12 @@
 package els.threading;
 
-import els.commController.Client;
-import els.commController.Utils;
+import els.main.Client;
+import els.main.Utils;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.Socket;
-import java.net.SocketException;
-import java.net.SocketTimeoutException;
 
 /**
  * Created by Filip on 2015-07-13.

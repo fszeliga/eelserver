@@ -1,52 +1,16 @@
 package els.commView;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.util.ArrayList;
-import java.util.concurrent.CopyOnWriteArrayList;
-
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import javax.swing.JTextPane;
-import javax.swing.SwingUtilities;
-import javax.swing.border.BevelBorder;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.MatteBorder;
-import javax.swing.border.TitledBorder;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.text.StyledDocument;
-
-import els.commController.Client;
-import els.commController.ELSServer;
-import els.commController.Sensor;
-import els.commController.Utils;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  */
 public class ELSGUI extends JFrame implements ListSelectionListener, ActionListener, Comparable<Object>, Runnable {
+
     @Override
     public void actionPerformed(ActionEvent e) {
 
@@ -70,10 +34,10 @@ public class ELSGUI extends JFrame implements ListSelectionListener, ActionListe
     public static final String DEFAULT_FONT = "Courier";
     public static final int DEFAULT_FONT_SIZE = 12;
 
-    private JTextPane mOutputField;
-    private JScrollPane mOutputScroll;
+   // private JScrollPane mOutputScroll;
 
-    private StyledDocument mOutputDocument;
+
+
     private JPanel centerPane;
     private static final long serialVersionUID = 1L;
     private JButton notifyAllButton;
@@ -95,26 +59,14 @@ public class ELSGUI extends JFrame implements ListSelectionListener, ActionListe
         this.server = server;
 
         createGUI();
-        setMinimumSize(new Dimension(900, 600));
-        setVisible(true);
+
 
     }
 
 	// ========================================================
     private void createGUI() {
-        addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent e) {
-                server.disconnectAll();
-            }
-        });
-        setLayout(new BorderLayout());
-        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setSize(550, 400);
 
-        Color borderhighlightouter = new Color(220, 220, 220);
-        Color borderhighlightinner = new Color(170, 170, 170);
-        Color bordershadowouter = new Color(120, 120, 120);
-        Color bordershadowinner = new Color(170, 170, 170);
+
 
         JPanel topPane = new JPanel();
         JPanel startPane = new JPanel();
@@ -138,7 +90,7 @@ public class ELSGUI extends JFrame implements ListSelectionListener, ActionListe
         panelControllableSlider.removeAll();
         panelControllableButton.removeAll();
         panelNonControllable.removeAll();
-
+/*
         for (Sensor s : server.getRecentSensors()) {
             s.createControlPanel();
 
@@ -167,32 +119,20 @@ public class ELSGUI extends JFrame implements ListSelectionListener, ActionListe
         bottomPane.add(clientsLabel, BorderLayout.LINE_START);
 	    // -----------------------------
         // Output
-        mOutputField = new JTextPane();
-        mOutputField.setEditable(false);
-        mOutputField.setBackground(new Color(245, 245, 245));
-        mOutputDocument = mOutputField.getStyledDocument();
-
-        mOutputScroll = new JScrollPane(mOutputField);
-
-        mOutputScroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        mOutputScroll.setPreferredSize(new Dimension(250, 400));
-        mOutputScroll.setMinimumSize(new Dimension(50, 50));
-        mOutputScroll.setOpaque(false);
-        mOutputScroll.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createEmptyBorder(0, 0, 1, 0), BorderFactory.createBevelBorder(BevelBorder.LOWERED, borderhighlightouter, borderhighlightinner, bordershadowouter, bordershadowinner)));
 
         notifyAllButton = new JButton("Notify all");
         notifyAllButton.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
                 //Execute when button is pressed
-                server.updateAllOnEvent();
+                //server.updateAllOnEvent();
             }
         });
         rebootBoxButton = new JButton("Reboot Box");
         rebootBoxButton.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-                server.resetBox();
+                //server.resetBox();
             }
         });
 
@@ -200,7 +140,7 @@ public class ELSGUI extends JFrame implements ListSelectionListener, ActionListe
         sensorListButton.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-                server.printSensorList();
+                //server.printSensorList();
             }
         });
 
@@ -208,7 +148,7 @@ public class ELSGUI extends JFrame implements ListSelectionListener, ActionListe
         testButton.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-                server.testFunction();
+                //server.testFunction();
             }
         });
         
@@ -268,7 +208,7 @@ public class ELSGUI extends JFrame implements ListSelectionListener, ActionListe
         userMessage.addKeyListener(new KeyListener() {
             public void keyPressed(KeyEvent e) {
                 if (e.getKeyCode() == KeyEvent.VK_ENTER & !userMessage.getText().equals("")) {
-                    server.sendUserMessage(userMessage.getText());
+                    //server.sendUserMessage(userMessage.getText());
                     displayMessage(userMessage.getText());
                     if (textfieldHistory.size() != 0) {
                         textfieldHistory.remove(textfieldHistory.size() - textfieldPosition);
@@ -302,7 +242,8 @@ public class ELSGUI extends JFrame implements ListSelectionListener, ActionListe
             @Override
             public void keyReleased(KeyEvent arg0) {;
             }
-        });
+
+});
 
         JButton sendUserMessage = new JButton("Send");
         sendUserMessage.addActionListener(new ActionListener() {
@@ -310,7 +251,7 @@ public class ELSGUI extends JFrame implements ListSelectionListener, ActionListe
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 if (!userMessage.getText().equals("")) {
-                    server.sendUserMessage(userMessage.getText());
+                    //server.sendUserMessage(userMessage.getText());
                     displayMessage(userMessage.getText());
                     textfieldHistory.add(userMessage.getText());
                     textfieldPosition += 1;
@@ -349,12 +290,7 @@ public class ELSGUI extends JFrame implements ListSelectionListener, ActionListe
 
     }
 
-    private final boolean shouldScroll() {
-        int min = mOutputScroll.getVerticalScrollBar().getValue() + mOutputScroll.getVerticalScrollBar().getVisibleAmount();
-        int max = mOutputScroll.getVerticalScrollBar().getMaximum();
 
-        return min == max;
-    }
 
     public synchronized void updateClients(CopyOnWriteArrayList<Client> clients) {
         clientsLabel.setText("Connected Clients: " + clients.size());
@@ -376,69 +312,5 @@ public class ELSGUI extends JFrame implements ListSelectionListener, ActionListe
         return this.toString().compareTo(o.toString());
     }
 
-    private boolean isViewAtBottom() {
-        JScrollBar sb = mOutputScroll.getVerticalScrollBar();
-        int min = sb.getValue() + sb.getVisibleAmount();
-        int max = sb.getMaximum();
-        //System.out.println(min + " " + max);
-        return min == max;
-    }
-
-    private void scrollToBottom() {
-        SwingUtilities.invokeLater(
-                new Runnable() {
-                    public void run() {
-                        mOutputScroll.getVerticalScrollBar().setValue(mOutputScroll.getVerticalScrollBar().getMaximum());
-                    }
-                });
-    }
-
-    public void run() {
-        while (true) {
-            if (shouldScroll()) {
-                SwingUtilities.invokeLater(
-                        new Runnable() {
-                            public void run() {
-                                mOutputScroll.getVerticalScrollBar().setValue(mOutputScroll.getVerticalScrollBar().getMaximum());
-                            }
-                        });
-            }
-
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                break;
-            }
-        }
-    }
-
-    public void displayMessage(String message) {
-        synchronized (this) {
-            displayMessage(message, "");
-        }
-    }
-
-    public void displayMessage(String message, String style) {
-        displayMessage(message, style, true);
-    }
-
-    public void displayMessage(String message, String style, boolean prependnewline) {
-        String newline = (prependnewline ? "\n" : "");
-        boolean scroll = isViewAtBottom() && prependnewline;
-
-        style = (style.equals("") ? "regular" : style);
-        message = message.replace("\n", " ");
-
-        try {
-            mOutputDocument.insertString(mOutputDocument.getLength(),
-                    String.format("%s%s", newline, message),
-                    mOutputDocument.getStyle(style));
-        } catch (Exception e) {
-        }
-
-        if (scroll) {
-            scrollToBottom();
-        }
-    }
 */
 }

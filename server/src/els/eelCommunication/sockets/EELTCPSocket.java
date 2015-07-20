@@ -1,6 +1,6 @@
 package els.eelCommunication.sockets;
 
-import els.commController.Utils;
+import els.main.Utils;
 
 import java.io.DataOutputStream;
 import java.io.IOException;
@@ -37,6 +37,15 @@ public class EELTCPSocket implements EELSocket {
         } catch (IOException e) {
             //client.disconnect();
             Utils.print(Utils.ANSI_RED, "IOException in ClientOutput.notifyClient()");
+        }
+    }
+
+    @Override
+    public void close() {
+        try {
+            socket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
