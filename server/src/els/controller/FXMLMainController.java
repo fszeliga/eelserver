@@ -2,16 +2,19 @@ package els.controller;
 
 import els.main.Utils;
 import els.model.MainModel;
+import els.model.Sensor;
+import els.model.SensorModel;
 import java.net.URL;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.geometry.Pos;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.FlowPane;
+import javafx.scene.layout.TilePane;
+import javafx.scene.text.Font;
 import javafx.scene.text.TextFlow;
 
 /**
@@ -20,16 +23,18 @@ import javafx.scene.text.TextFlow;
 public class FXMLMainController implements Initializable {
     private static FXMLMainController mainController = new FXMLMainController();
 
-    public static FXMLMainController the(){return mainController;}
+    public static FXMLMainController the() {
+        return mainController;
+    }
 
     @FXML
     Button databaseLogButton;
     @FXML
     ScrollPane sensorsScrollPane;
     @FXML
-    FlowPane sensorsFlowPane;
+    TilePane sensorsFlowPane;
     @FXML
-    TextFlow infoTextArea;
+    TextFlow infoTextFlow;
     @FXML
     Label infoLabel;
 
@@ -39,62 +44,39 @@ public class FXMLMainController implements Initializable {
         Utils.write("[FXMLMainController] initialize() called");
 
         assert databaseLogButton != null : "fx:id=\"databaseLogButton\" was not injected";
-        assert sensorsScrollPane !=null : "scollpane empty";
+        assert sensorsScrollPane != null : "scollpane empty";
 
-        MainModel.the().setInfoTextArea(infoTextArea);
-        databaseLogButton.setOnAction(event -> MainModel.the().setInfoText("test"));
+        Font.loadFont(getClass().getResource("../view/vrp-font.ttf").toExternalForm(), 50);
 
-        addSensors(sensorsFlowPane);
+        MainModel.the().setInfoTextArea(infoTextFlow);
+        databaseLogButton.setOnAction(event -> {
+            MainModel.the().setInfoText("test");
+            SensorModel.the().setSensorValue(10, 10);
+        });
+
+        addSensors();
+
+        sensorsFlowPane.widthProperty().addListener((observable, oldValue, newValue) -> {
+            int count = (int) sensorsFlowPane.getWidth() / 130;
+            int gap = (int) (sensorsFlowPane.getWidth() - count * 120) / count;
+            Utils.write(Integer.toString(count));
+            Utils.write(Integer.toString(gap));
+            //sensorsFlowPane.setVgap(gap);
+            //sensorsFlowPane.setHgap(gap);
+        });
+        sensorsFlowPane.setPadding(new Insets(5, 5, 5, 5));
     }
 
 
-    private void addSensors(FlowPane pane) {
-       // ScrollPane scrollPane = new ScrollPane();
-        //scrollPane.setId("sensors_scrollpane");
-        //scrollPane.setFitToWidth(true);
-        //FlowPane container = new FlowPane(Orientation.HORIZONTAL, 10, 10);
-        //container.setId("sensors_flowpane");
-        //container.setPadding(new Insets(10, 10, 10, 10));
+    private void addSensors() {
+        Map<Integer, Sensor> sensors = SensorModel.the().getSensors();
 
-//        scrollPane.viewportBoundsProperty().addListener((bounds, oldBounds, newBounds) -> {
-//            container.setPrefWidth(newBounds.getWidth());
-//            if (newBounds.getHeight() > container.getPrefHeight()) {
-//                container.setPrefHeight(newBounds.getHeight());
-//            }
-//        });
-
-        //scrollPane.setContent(container);
-
-        for (int i = 0; i < 15; i++) {
-            BorderPane sensor = new BorderPane();
-            sensor.setId("sensor_tile");
-            double size = 100;
-            sensor.setMinHeight(size);
-            sensor.setMinWidth(size);
-            sensor.setPrefSize(size, size);
-
-            Label sensor_name = new Label("Active Sensor " + i);
-            sensor_name.setId("sensor_name");
-
-            sensor.setAlignment(sensor_name, Pos.CENTER);
-            sensor.setTop(sensor_name);
-            pane.getChildren().add(sensor);
+        for (Integer key : sensors.keySet()) {
+            Sensor sensorHelp = sensors.get(key);
+            sensorHelp.setId("sensor_pane");
+            sensorsFlowPane.getChildren().add(sensorHelp);
         }
-        for (int i = 0; i < 15; i++) {
-            BorderPane sensor = new BorderPane();
-            sensor.setId("sensor_tile");
-            double size = 100;
-            sensor.setMinHeight(size);
-            sensor.setMinWidth(size);
-            sensor.setPrefSize(size, size);
 
-            Label sensor_name = new Label("Passive Sensor " + i);
-            sensor_name.setId("sensor_name");
-
-            sensor.setAlignment(sensor_name, Pos.CENTER);
-            sensor.setTop(sensor_name);
-            pane.getChildren().add(sensor);
-        }
     }
 
 }

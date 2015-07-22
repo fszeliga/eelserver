@@ -1,6 +1,6 @@
 package els.handlers;
 
-import els.eelCommunication.sockets.EELSocket;
+import els.comm.sockets.EELSocket;
 
 /**
  * Created by filip on 15.07.15.

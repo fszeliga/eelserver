@@ -6,42 +6,64 @@
     -fx-text-fill: white;
     //-fx-font-family: "Arial Narrow";
     -fx-font-weight: bold;
-    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+    -fx-background-color: linear-gradient(#38424b, #191d22);
     -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
 }
 
 .button:hover {
+    -fx-background-color: linear-gradient(#191d22, #38424b);
+}
+
+
+#sensor_pane {
+    -fx-background-color:
+        #090a0c,
+        linear-gradient(#38424b 0%, #1f2429 20%, #191d22 100%),
+        linear-gradient(#20262b, #191d22),
+        radial-gradient(center 50% 0%, radius 100%, rgba(114,131,148,0.9), rgba(255,255,255,0));
+    -fx-background-radius: 5,5,5,5;
+    -fx-background-insets: 0,1,2,0;
+    -fx-text-fill: white;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+    -fx-font-family: "Arial";
+    -fx-text-fill: linear-gradient(white, #d0d0d0);
+    -fx-font-size: 12px;
+    -fx-padding: 10 20 10 20;
+}
+
+#sensor_pane:hover {
     -fx-background-color: linear-gradient(#2A5058, #61a2b1);
 }
 
-#sensor_tile {
-    -fx-background-color: linear-gradient(from 25% 25% to 100% 100%, #888, #aaa);
-    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
-    -fx-border-radius: 10 10 10 10;
-    -fx-background-radius: 10 10 10 10;
+#sensor_pane:active {
+ -fx-font-family: asd;
 }
 
 #sensor_name {
     -fx-color: #000;
 }
 
+#sensorsScrollPane{
+    -fx-background-color:#444;
+    -fx-background:#444;
+    -fx-effect: innershadow( gaussian , rgba(0,0,0,0.6) , 10, 0.3 , 0 , 1 );
+}
+
 #info_label{
     -fx-color: #000;
-}
-
-#sensors_scrollpane{
-    -fx-background-color: #444;
-            -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
-}
-
-#sensors_flowpane{
-    -fx-background-color: #444;
 }
 
 #info_bar{
     -fx-background-color: linear-gradient(#665, #333);
 }
 
-.padding-top{
-    -fx-padding-top: 10px;
+#sensor_icon{
+    -fx-font-family: vrp-font;
+    -fx-font-size: 10px;
+    //-fx-effect: innershadow( three-pass-box , derive(-icons-color,-70%) , 0.1em, 0.0 , 0.07em, 0.07em );
+    //-fx-text-fill: linear-gradient(to bottom, derive(-icons-color,20%) 10%, derive(-icons-color,-40%) 80%);
+}
+
+#sensor_icon:hover{
+    //-fx-effect: dropshadow( three-pass-box , rgba(0,0,.5,0) , 0.01em, 0.0 , 0, 0);
 }

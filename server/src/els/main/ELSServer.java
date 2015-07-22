@@ -256,25 +256,7 @@ public class ELSServer {
 	public CopyOnWriteArrayList<Sensor> getControllableSensorList() {
 		CopyOnWriteArrayList<Sensor> sensorList = new CopyOnWriteArrayList<Sensor>();
 
-        JSONArray sensors = (JSONArray) allSensors.get("controllable");
 
-		for(int i = 0; i<sensors.size();i++){
-			JSONObject c = (JSONObject) sensors.get(i);
-
-			Sensor sensor = new Sensor(this);
-			sensor.setControllable(true);
-			sensor.setID(Integer.parseInt((String) c.get("sensor_id")));
-			sensor.setLabelName((String) c.get("name"));
-			sensor.setVLow(Float.parseFloat((String) c.get("vlow")));
-			sensor.setVHigh(Float.parseFloat((String) c.get("vhigh")));
-			if(c.get("continuous").equals("1")) sensor.setContinuous(true); //default ist false
-			if(c.get("is_float").equals("1")) sensor.setFloat(true); //default ist false
-			sensor.setSymbol((String) c.get("symbol"));
-
-			sensorList.add(sensor);
-
-			System.out.println(sensor.toString());
-		}
 
 		return sensorList;
 	}

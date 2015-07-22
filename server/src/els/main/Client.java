@@ -5,8 +5,7 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
-import els.eelCommunication.sockets.EELSocket;
-import els.threading.JavaTCP;
+import els.comm.sockets.EELSocket;
 
 
 public class Client {
@@ -16,7 +15,6 @@ public class Client {
 	//private String clientIPPort = null;
 	private Socket clientSocket = null;
 	private ClientHandler handler;
-	private JavaTCP clientThread;
 	private String clientIP = "";
 
 	//id mapped to 1 = yes to update. 0 = no
@@ -29,8 +27,8 @@ public class Client {
 		System.out.println("Hello, im a client. IP: " + clientIP);
 
 		// create thread to listen for input from clients
-		clientThread = new JavaTCP(this, this.clientSocket);
-		clientThread.start();
+		//clientThread = new JavaTCP(this, this.clientSocket);
+		//clientThread.start();
 		
 		//clientThread = new ClientOutput(this, this.clientSocket);
 		//clientThread.start();
@@ -138,8 +136,8 @@ public class Client {
 
 	public synchronized void disconnect(){
 		try {
-			clientThread.closeInput();
-			clientThread.closeOutput();
+//			clientThread.closeInput();
+//			clientThread.closeOutput();
 			clientSocket.close();
 		} catch (IOException e) {
 			System.out.println("IOException in Client.disconnect()");
@@ -150,8 +148,8 @@ public class Client {
 	
 	public void disconnectOnShutdown(){
 		try {
-			clientThread.closeInput();
-			clientThread.closeOutput();
+			//clientThread.closeInput();
+			//clientThread.closeOutput();
 			clientSocket.close();
 		} catch (IOException e) {
 			System.out.println("IOException in Client.disconnectOnShutdown()");

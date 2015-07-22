@@ -1,5 +1,6 @@
 package els.model;
 
+import els.main.Utils;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 
@@ -11,9 +12,12 @@ public class MainModel {
 
     private static MainModel mainModel = new MainModel();
 
-    public static MainModel the(){return mainModel;}
+    public static MainModel the() {
+        return mainModel;
+    }
 
-    private MainModel(){
+    private MainModel() {
+        Utils.write("[MainModel] created singleton", Utils.ANSI_GREEN);
     }
 
     public void setInfoTextArea(TextFlow infoTextArea) {
@@ -21,8 +25,8 @@ public class MainModel {
     }
 
     public void setInfoText(String infoText) {
-        Text text = new Text(infoText);
-        text.setWrappingWidth(infoTextFlow.getWidth()-5);
+        Text text = new Text(infoText + "\n");
+        text.setWrappingWidth(infoTextFlow.getWidth() - 5);
         this.infoTextFlow.getChildren().add(text);
     }
 }
